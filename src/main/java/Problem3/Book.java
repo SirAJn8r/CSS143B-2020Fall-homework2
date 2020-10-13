@@ -13,13 +13,24 @@ public abstract class Book implements StoreMediaOperations {
         this.id = UUID.randomUUID();
     }
 
-    // copy constructor
     public Book(Book anotherBook) {
-        // homework
+        this.id = anotherBook.id;
+        this.title = anotherBook.title;
+        this.author = anotherBook.author;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        // homework
+    public boolean equals(Object obj)
+    {
+        if(obj.getClass() != this.getClass())
+            return false;
+        else
+        {
+            Book bookObj = (Book)(obj);
+            if(bookObj.author != this.author || bookObj.title != this.title || bookObj.id != this.id)
+                return false;
+            else
+                return true;
+        }
     }
 }
